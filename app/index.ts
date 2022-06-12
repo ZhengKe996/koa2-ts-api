@@ -1,3 +1,5 @@
+import dotenv from "dotenv";
+dotenv.config();
 import Koa from "koa";
 import router from "./router";
 import { Server } from "http";
