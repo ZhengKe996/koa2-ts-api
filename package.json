@@ -20,8 +20,10 @@
   "dependencies": {
     "@types/koa": "^2.13.4",
     "@types/koa-router": "^7.4.4",
+    "@types/log4js": "^2.3.5",
     "koa": "^2.13.4",
-    "koa-router": "^10.1.1"
+    "koa-router": "^10.1.1",
+    "log4js": "^6.5.2"
   },
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
