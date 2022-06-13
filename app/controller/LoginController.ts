@@ -5,7 +5,7 @@ import AdminService from "../service/AdminService";
 
 class LoginController {
   async index(ctx: Context) {
-    const admin = await AdminService.getAdminById(2);
+    const admin = await AdminService.getAdminById(1);
     console.log(admin);
     if (admin === null) return response.error(ctx, "管理员不存在", []);
     const token = sign(admin);

@@ -4,6 +4,12 @@ class AdminService {
   getAdminById(adminId: number) {
     return Admin.findByPk(adminId);
   }
+  getAdminAdminListByPage(page: number, limit: number = 15) {
+    return Admin.findAndCountAll({
+      limit: limit,
+      offset: (page - 1) * limit,
+    });
+  }
 }
 
 export default new AdminService();
