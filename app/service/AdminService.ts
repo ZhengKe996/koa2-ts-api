@@ -1,8 +1,8 @@
 import Admin from "../model/Admin";
 
 class AdminService {
-  getAdmin() {
-    return Admin.findByPk(1);
+  getAdminById(adminId: number) {
+    return Admin.findByPk(adminId);
   }
 }
 
