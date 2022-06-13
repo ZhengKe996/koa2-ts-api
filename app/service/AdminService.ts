@@ -10,6 +10,13 @@ class AdminService {
       offset: (page - 1) * limit,
     });
   }
+  getAdminByName(name: string) {
+    return Admin.findOne({
+      where: {
+        name: name,
+      },
+    });
+  }
 }
 
 export default new AdminService();

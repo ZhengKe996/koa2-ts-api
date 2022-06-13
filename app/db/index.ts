@@ -27,9 +27,8 @@ const sequelize = new Sequelize(
 const db = async () => {
   try {
     await sequelize.authenticate();
-    console.log("db ok");
   } catch (error) {
-    console.log("db err", error);
+    console.log("mysql err", error);
   }
 };
 
