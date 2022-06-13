@@ -21,6 +21,10 @@ const config = {
       db: { appenders: ["db"], level: "info" },
     },
   },
+  jwt: {
+    jwt_secret: process.env.JWT_SECRET,
+    jwt_expire: process.env.JWT_EXPIRE,
+  },
 };
 
 export default config;

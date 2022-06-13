@@ -2,7 +2,7 @@ import Admin from "../model/Admin";
 
 class AdminService {
   getAdmin() {
-    return Admin.findOne();
+    return Admin.findByPk(1);
   }
 }
 
