@@ -1,8 +1,10 @@
 import { Context } from "koa";
+import AdminService from "../service/AdminService";
 
 class indexController {
   async index(ctx: Context) {
-    ctx.body = [1, 2, 3, 4, 5, 6];
+    const admin = await AdminService.getAdmin();
+    ctx.body = admin;
   }
 }
 
