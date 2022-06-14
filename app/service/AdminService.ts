@@ -23,6 +23,9 @@ class AdminService {
   updateAdmin(id: number, admin: any) {
     return Admin.update(admin, { where: { id: id } });
   }
+  deleteAdmin(id: number) {
+    return Admin.destroy({ where: { id: id } });
+  }
 }
 
 export default new AdminService();

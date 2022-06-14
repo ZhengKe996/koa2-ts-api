@@ -11,6 +11,7 @@ router.post("/upload", UploadController.upload);
 router.get("/adminlist", AdminController.getAdminList);
 router.post("/admin", AdminController.addAdmin);
 router.put("/admin/:id", AdminController.editAdmin);
+router.delete("/admin/:id", AdminController.deleteAdmin);
 router.use(AuthMiddleware);
 router.get("/", IndexController.index);
 
