@@ -57,6 +57,9 @@ class AdminController {
 
     if (error !== null) return response.error(ctx, error);
 
+    const admin = await AdminService.getAdminByName(data.name);
+    if (admin !== null) return response.error(ctx, "该用户名已经存在");
+
     // md5 加密
     data.password = createHash("md5").update(data.password).digest("hex");
 
