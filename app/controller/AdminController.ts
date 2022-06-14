@@ -68,6 +68,39 @@ class AdminController {
 
     return response.error(ctx, "新增管理员失败");
   }
+
+  async editAdmin(ctx: Context) {
+    const id = ctx.params["id"] as number;
+
+    const admin = await AdminService.getAdminById(id);
+    if (admin === null) return response.error(ctx, "用户不存在");
+
+    const rules: Rules = {
+      name: [
+        {
+          type: "string",
+          required: true,
+          message: "用户名不能为空",
+        },
+      ],
+    };
+
+    interface IAdmin {
+      name: string;
+      password: string;
+    }
+
+    const { data, error } = await validate<IAdmin>(ctx, rules);
+    if (error !== null) return response.error(ctx, error);
+
+    if (data.password !== undefined && data.password !== "") {
+      data.password = createHash("md5").update(data.password).digest("hex");
+    }
+
+    const [number] = await AdminService.updateAdmin(id, data);
+    if (number > 0) return response.success(ctx);
+    return response.error(ctx, "更新失败");
+  }
 }
 
 export default new AdminController();

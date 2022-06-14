@@ -10,6 +10,7 @@ router.post("/login", LoginController.index);
 router.post("/upload", UploadController.upload);
 router.get("/adminlist", AdminController.getAdminList);
 router.post("/admin", AdminController.addAdmin);
+router.put("/admin/:id", AdminController.editAdmin);
 router.use(AuthMiddleware);
 router.get("/", IndexController.index);
 

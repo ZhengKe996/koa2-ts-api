@@ -20,6 +20,9 @@ class AdminService {
   addAdmin(admin: any) {
     return Admin.create(admin);
   }
+  updateAdmin(id: number, admin: any) {
+    return Admin.update(admin, { where: { id: id } });
+  }
 }
 
 export default new AdminService();
