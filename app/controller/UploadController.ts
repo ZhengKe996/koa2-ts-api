@@ -4,21 +4,31 @@ import response from "../../utils/response";
 import path from "path";
 
 class UploadController {
-  index(ctx: Context) {}
   upload = (ctx: Context) => {
+    const typeSet = new Set([
+      "image/jpeg",
+      "image/jpg",
+      "image/png",
+      "image/gif ",
+    ]);
+
     const file = ctx.request.files?.file;
-    if (file) {
-      // @ts-ignore
-      const reader = fs.createReadStream(file.filepath);
-      // @ts-ignore
-      const ext = path.extname(file.originalFilename);
-      const filepath = `/upload/${this.randomStr(12)}${ext}`;
-      const writer = fs.createWriteStream(`statics` + filepath);
-      reader.pipe(writer);
-      response.success(ctx, { file: filepath });
-    } else {
-      response.error(ctx, "文件不可以为空");
-    }
+
+    if (!file) return response.error(ctx, "文件不可以为空");
+
+    //@ts-ignore
+    const fileType = file.mimetype;
+    if (!typeSet.has(fileType)) return response.error(ctx, "非法的文件上传");
+
+    // @ts-ignore
+    const reader = fs.createReadStream(file.filepath);
+    // @ts-ignore
+    const ext = path.extname(file.originalFilename);
+    const filepath = `/upload/${this.randomStr(12)}${ext}`;
+    const writer = fs.createWriteStream(`statics` + filepath);
+
+    reader.pipe(writer);
+    response.success(ctx, { file: filepath });
   };
   randomStr(length: number): string {
     const seeder =

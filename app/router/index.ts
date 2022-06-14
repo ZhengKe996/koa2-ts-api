@@ -8,8 +8,9 @@ import AuthMiddleware from "../middleware/AuthMiddleware";
 const router = new koaRouter({ prefix: "/admin" });
 router.post("/login", LoginController.index);
 router.post("/upload", UploadController.upload);
-router.use(AuthMiddleware);
 router.get("/adminlist", AdminController.getAdminList);
+router.post("/admin", AdminController.addAdmin);
+router.use(AuthMiddleware);
 router.get("/", IndexController.index);
 
 export default router;

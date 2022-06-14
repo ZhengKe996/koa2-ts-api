@@ -5,6 +5,8 @@ export default class Admin extends Model {
   @Column
   name!: string;
   @Column
+  password!: string;
+  @Column
   mobile!: string;
   @Column
   email!: string;
